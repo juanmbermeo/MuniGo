@@ -63,9 +63,12 @@ UNFOLD = {
             "type": "image/svg+xml",
             "href": lambda request: static("img/logo_munigo.jpeg"),
         },
+    ],   
+    "STYLES": [
+        #lambda request: static("css/admin.css"),
     ],
 }
-
+    
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

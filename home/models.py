@@ -8,7 +8,7 @@ import re
 
 def validar_telefono(value):
     # Expresión regular para validar el formato de teléfono (ajusta según tu formato)
-    regex = r'^\+\d{1,3}\s\d{10}$'  # Ejemplo: +57 3112345678
+    regex = r'^\+\d{1,3}\s\d{8,14}$'  # Ejemplo: +57 3112345678
     if not re.match(regex, value):
         raise ValidationError(('El número de teléfono debe tener el formato +XXX XXXXXXXXX.'), params={'value': value})
 
