@@ -81,7 +81,7 @@ class Alerta(models.Model):
         ('activa', 'Activa'),
         ('resuelta', 'Resuelta'),
         ('cancelada', 'Cancelada'),
-    ], default="activa")
+    ],)
     
     def __str__(self):
         return self.titulo
@@ -141,7 +141,7 @@ class Barrio(models.Model):
         return self.nombre
 
 class TipoBasura(models.Model):
-    nombre = models.CharField(max_length=50)
+    tipo_basura = models.CharField(max_length=50)
 
 class Basura(models.Model):
     id_basura = models.AutoField(primary_key=True)

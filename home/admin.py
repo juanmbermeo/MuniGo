@@ -18,7 +18,7 @@ class EventoAdmin(ModelAdmin):
 
 @admin.register(Usuario)
 class UsuarioAdmin(ModelAdmin):
-    list_display = ('username', 'email', 'telefono', 'date_joined')
+    list_display = ('username', 'email', 'telefono', 'avatar')
     search_fields = ('username', 'email')
     list_filter = ('username', 'email')
     fieldsets = (
@@ -50,7 +50,7 @@ class AlertaAdmin(ModelAdmin):
     readonly_fields = ('fecha',)
     fieldsets = (
         ('Información básica', {'fields': ('titulo', 'descripcion')}),
-        ('Detalles de la alerta', {'fields': ('fecha', 'ubicacion', 'tipo_alerta')}),
+        ('Detalles de la alerta', {'fields': ('fecha', 'ubicacion', 'tipo_alerta', 'estado')}),
         ('Multimedia', {'fields': ('imagenes',)})
     )
 
@@ -93,8 +93,8 @@ class BarrioAdmin(ModelAdmin):
 
 @admin.register(TipoBasura)
 class TipoBasuraAdmin(ModelAdmin):
-    list_display = ('nombre',)
-    search_fields = ('nombre',)
+    list_display = ('tipo_basura',)
+    search_fields = ('tipo_basura',)
 
 
 @admin.register(Basura)
