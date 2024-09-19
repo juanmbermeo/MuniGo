@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-s6dzv9#(*u##26l3f5a*ixr3-6t!bx+5a(j1o+=s(9@c+6t9-i
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['52.15.39.120','localhost']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -63,10 +63,40 @@ UNFOLD = {
             "type": "image/svg+xml",
             "href": lambda request: static("img/logo_munigo.jpeg"),
         },
-    ],   
-    "STYLES": [
-        #lambda request: static("css/admin.css"),
     ],
+    
+    "LOGIN": {
+        "image": lambda request: static("img/logo_munigo.jpeg"),
+    },
+       
+    "STYLES": [
+        lambda request: static("css/style.css"),
+    ],
+    
+    "COLORS": {
+    "font": {
+        "subtle-light": "120 143 115",  # Verde suave para modo claro
+        "subtle-dark": "168 196 155",   # Verde suave para modo oscuro
+        "default-light": "50 102 50",   # Verde oscuro para texto principal en modo claro
+        "default-dark": "200 230 200",  # Verde claro para texto principal en modo oscuro
+        "important-light": "34 85 34",  # Verde más oscuro para destacar en modo claro
+        "important-dark": "220 255 220",# Verde claro para destacar en modo oscuro
+    },
+    "primary": {
+        "50": "236 253 245",   # Verde muy claro
+        "100": "209 250 229",  # Verde más suave
+        "200": "167 243 208",  # Verde pálido
+        "300": "110 231 183",  # Verde moderado
+        "400": "52 211 153",   # Verde vibrante
+        "500": "16 185 129",   # Verde principal (botones, etc.)
+        "600": "5 150 105",    # Verde más intenso
+        "700": "4 120 87",     # Verde oscuro
+        "800": "6 95 70",      # Verde muy oscuro
+        "900": "6 78 59",      # Verde intenso y oscuro
+        "950": "2 44 33",      # Verde muy oscuro casi negro
+    },
+}
+
 }
     
 MIDDLEWARE = [
@@ -84,7 +114,7 @@ ROOT_URLCONF = 'admin.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -150,6 +180,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = '/static/'
+LOGIN_URL = '/login/'
+LOGOUT_REDIRECT_URL = '/login/'  
+
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]

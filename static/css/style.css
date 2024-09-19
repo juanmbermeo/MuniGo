@@ -1,0 +1,8 @@
+body.login {
+    background-image: url(../img/fondo.webp);
+}
+.bg {
+    background-image: url(../img/munigo.webp);
+    background-position: center;
+    background-size: cover;
+}
