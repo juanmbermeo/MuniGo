@@ -81,7 +81,7 @@ class Alerta(models.Model):
         ('activa', 'Activa'),
         ('resuelta', 'Resuelta'),
         ('cancelada', 'Cancelada'),
-    ],)
+    ], default="activa")
     
     def __str__(self):
         return self.titulo
