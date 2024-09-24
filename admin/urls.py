@@ -20,6 +20,6 @@ from home.views import custom_login_view  # Importa desde la aplicación
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('login/', custom_login_view, name='login'),
+    path('', custom_login_view, name='login'),
     path('', include('home.urls')),
 ]   
