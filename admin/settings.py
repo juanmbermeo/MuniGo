@@ -42,7 +42,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
     'home',
+    'corsheaders',
 ]
 
 UNFOLD = {
@@ -81,6 +83,7 @@ UNFOLD = {
         "default-dark": "200 230 200",  # Verde claro para texto principal en modo oscuro
         "important-light": "34 85 34",  # Verde más oscuro para destacar en modo claro
         "important-dark": "220 255 220",# Verde claro para destacar en modo oscuro
+        
     },
     "primary": {
         "50": "236 253 245",   # Verde muy claro
@@ -102,12 +105,22 @@ UNFOLD = {
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',  # Debe estar antes de CommonMiddleware
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+# Permitir solicitudes desde cualquier origen (para pruebas)
+CORS_ALLOW_ALL_ORIGINS = True
+
+# En producción, limita los orígenes permitidos (quitar la línea de arriba y usar esta configuración):
+# CORS_ALLOWED_ORIGINS = [
+#     "https://tuappmovil.com",  # Reemplaza con el dominio de tu app móvil en producción
+#     "https://otraapp.com",     # Agrega más dominios si es necesario
+# ]
 
 ROOT_URLCONF = 'admin.urls'
 
@@ -187,7 +200,17 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'munigo.soporte@gmail.com'
+EMAIL_HOST_PASSWORD = 'munigo2024'
+DEFAULT_FROM_EMAIL = 'munigo.soporte@gmail.com'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
