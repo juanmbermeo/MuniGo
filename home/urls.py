@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 from .views import (
     custom_login_view,
     custom_logout,
@@ -6,25 +6,21 @@ from .views import (
     CustomPasswordResetDoneView,
     CustomPasswordResetConfirmView,
     CustomPasswordResetCompleteView,
-    UsuarioList,
-    UsuarioDetail,
-    ServicioMunicipalList,
-    ServicioMunicipalDetail,
-    EventoList,
-    EventoDetail,
-    AlertaList,
-    AlertaDetail,
-    PagoServicioList,
-    PagoServicioDetail,
-    ComunicadoList,
-    ComunicadoDetail,
-    ContactoEmergenciaList,
-    ContactoEmergenciaDetail,
-    BasuraList,
-    BasuraDetail,
+    UsuarioViewSet, ServicioMunicipalViewSet, EventoViewSet, AlertaViewSet, PagoServicioViewSet, ComunicadoViewSet, ContactoEmergenciaViewSet, BarrioViewSet, TipoBasuraViewSet, BasuraViewSet
 )
-from django.contrib.auth import views as auth_views
+from rest_framework.routers import DefaultRouter
 
+router = DefaultRouter()
+router.register(r'usuario', UsuarioViewSet)
+router.register(r'servicios-municipal', ServicioMunicipalViewSet)
+router.register(r'evento', EventoViewSet)
+router.register(r'alerta', AlertaViewSet)
+router.register(r'pago-servicio', PagoServicioViewSet)
+router.register(r'comunicado', ComunicadoViewSet)
+router.register(r'contacto-emergencia', ContactoEmergenciaViewSet)
+router.register(r'barrio', BarrioViewSet)
+router.register(r'tipos-basura', TipoBasuraViewSet)
+router.register(r'basura', BasuraViewSet)
 
 urlpatterns = [
     path('login/', custom_login_view, name='login'),
@@ -34,35 +30,5 @@ urlpatterns = [
     path('reset/<uidb64>/<token>/', CustomPasswordResetConfirmView.as_view(), name='password_reset_confirm'),
     path('reset/done/', CustomPasswordResetCompleteView.as_view(), name='password_reset_complete'),
     
-     # Rutas para el modelo Usuario
-    path('api/usuarios/', UsuarioList.as_view(), name='usuario-list'),  # Listar usuarios
-    path('api/usuarios/<int:pk>/', UsuarioDetail.as_view(), name='usuario-detail'),  # Detalle de un usuario
 
-    # Rutas para el modelo ServicioMunicipal
-    path('api/servicios/', ServicioMunicipalList.as_view(), name='servicio-list'),  # Listar servicios
-    path('api/servicios/<int:pk>/', ServicioMunicipalDetail.as_view(), name='servicio-detail'),  # Detalle de un servicio
-
-    # Rutas para el modelo Evento
-    path('api/eventos/', EventoList.as_view(), name='evento-list'),  # Listar eventos
-    path('api/eventos/<int:pk>/', EventoDetail.as_view(), name='evento-detail'),  # Detalle de un evento
-
-    # Rutas para el modelo Alerta
-    path('api/alertas/', AlertaList.as_view(), name='alerta-list'),  # Listar alertas
-    path('api/alertas/<int:pk>/', AlertaDetail.as_view(), name='alerta-detail'),  # Detalle de una alerta
-
-    # Rutas para el modelo PagoServicio
-    path('api/pagos/', PagoServicioList.as_view(), name='pago-list'),  # Listar pagos
-    path('api/pagos/<int:pk>/', PagoServicioDetail.as_view(), name='pago-detail'),  # Detalle de un pago
-
-    # Rutas para el modelo Comunicado
-    path('api/comunicados/', ComunicadoList.as_view(), name='comunicado-list'),  # Listar comunicados
-    path('api/comunicados/<int:pk>/', ComunicadoDetail.as_view(), name='comunicado-detail'),  # Detalle de un comunicado
-
-    # Rutas para el modelo ContactoEmergencia
-    path('api/contactos/', ContactoEmergenciaList.as_view(), name='contacto-list'),  # Listar contactos
-    path('api/contactos/<int:pk>/', ContactoEmergenciaDetail.as_view(), name='contacto-detail'),  # Detalle de un contacto
-
-    # Rutas para el modelo Basura
-    path('api/basura/', BasuraList.as_view(), name='basura-list'),  # Listar basura
-    path('api/basura/<int:pk>/', BasuraDetail.as_view(), name='basura-detail'),  # Detalle de un registro de basura
 ]

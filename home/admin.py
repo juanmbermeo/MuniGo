@@ -1,6 +1,7 @@
 from django.contrib import admin
 from .models import Evento, Usuario, ServicioMunicipal, Alerta, Basura, Comunicado, ContactoEmergencia, PagoServicio, Barrio, TipoBasura
 from unfold.admin import ModelAdmin
+from django.utils.html import format_html
 
 @admin.register(Evento)
 class EventoAdmin(ModelAdmin):
@@ -18,13 +19,21 @@ class EventoAdmin(ModelAdmin):
 
 @admin.register(Usuario)
 class UsuarioAdmin(ModelAdmin):
-    list_display = ('username', 'email', 'telefono', 'avatar')
+    list_display = ('username', 'email', 'telefono', 'avatar_image')
     search_fields = ('username', 'email')
     list_filter = ('username', 'email')
     fieldsets = (
         ('Información básica', {'fields': ('username', 'email', 'password')}),
         ('Información adicional', {'fields': ('telefono', 'avatar')}),
     )
+    
+        # Método para mostrar la imagen en el panel de administración
+    def avatar_image(self, obj):
+        if obj.avatar:  # Verificar si existe una imagen en el campo 'avatar'
+            return format_html('<img src="{}" style="width: 50px; height:50px; border-radius: 50%;" />', obj.avatar.url)
+        return "No image"
+
+    avatar_image.short_description = 'Avatar'  # Nombre de la columna en el admin
 
 
 @admin.register(ServicioMunicipal)

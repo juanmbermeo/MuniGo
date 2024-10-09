@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    #'coreapi',
     'home',
     'corsheaders',
 ]
@@ -194,7 +195,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 LOGIN_URL = '/login/'
-LOGOUT_REDIRECT_URL = '/login/'  
+LOGOUT_REDIRECT_URL = '/login/' 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media') 
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
