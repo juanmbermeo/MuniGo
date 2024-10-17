@@ -1,16 +1,16 @@
 # api/serializer.py
 from rest_framework import serializers
-from .models import Usuario, ServicioMunicipal, Evento, Alerta, PagoServicio, Comunicado, ContactoEmergencia, Barrio, TipoBasura, Basura
+from .models import Usuario, Evento, Alerta, PagoServicio, Comunicado, ContactoEmergencia, Barrio, TipoBasura, Basura
 
 class UsuarioSerializer(serializers.ModelSerializer):
     class Meta:
         model = Usuario
         fields = ['id', 'username', 'telefono', 'email', 'avatar']
-        
+"""        
 class ServicioMunicipalSerializer(serializers.ModelSerializer):
     class Meta:
         model = ServicioMunicipal
-        fields = '__all__'
+        fields = '__all__'"""
         
 class EventoSerializer(serializers.ModelSerializer):
     class Meta:

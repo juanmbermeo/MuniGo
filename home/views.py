@@ -12,8 +12,8 @@ from django.urls import reverse_lazy
 
 from rest_framework import viewsets
 from rest_framework.permissions import AllowAny
-from .models import Usuario, ServicioMunicipal, Evento, Alerta, PagoServicio, Comunicado, ContactoEmergencia, Barrio, TipoBasura, Basura
-from .serializer import UsuarioSerializer, ServicioMunicipalSerializer, EventoSerializer, AlertaSerializer, PagoServicioSerializer, ComunicadoSerializer, ContactoEmergenciaSerializer, BarrioSerializer, TipoBasuraSerializer, BasuraSerializer
+from .models import Usuario, Evento, Alerta, PagoServicio, Comunicado, ContactoEmergencia, Barrio, TipoBasura, Basura
+from .serializer import UsuarioSerializer, EventoSerializer, AlertaSerializer, PagoServicioSerializer, ComunicadoSerializer, ContactoEmergenciaSerializer, BarrioSerializer, TipoBasuraSerializer, BasuraSerializer
 
 
 @never_cache
@@ -54,11 +54,11 @@ class UsuarioViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Usuario.objects.all()
     serializer_class = UsuarioSerializer  # Permitir acceso a todos
     permission_classes = [AllowAny]
-
+"""
 class ServicioMunicipalViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = ServicioMunicipal.objects.all()
     serializer_class = ServicioMunicipalSerializer
-    permission_classes = [AllowAny]
+    permission_classes = [AllowAny]"""
 
 class EventoViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Evento.objects.all()

@@ -6,13 +6,13 @@ from .views import (
     CustomPasswordResetDoneView,
     CustomPasswordResetConfirmView,
     CustomPasswordResetCompleteView,
-    UsuarioViewSet, ServicioMunicipalViewSet, EventoViewSet, AlertaViewSet, PagoServicioViewSet, ComunicadoViewSet, ContactoEmergenciaViewSet, BarrioViewSet, TipoBasuraViewSet, BasuraViewSet
+    UsuarioViewSet, EventoViewSet, AlertaViewSet, PagoServicioViewSet, ComunicadoViewSet, ContactoEmergenciaViewSet, BarrioViewSet, TipoBasuraViewSet, BasuraViewSet
 )
 from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
 router.register(r'usuario', UsuarioViewSet)
-router.register(r'servicios-municipal', ServicioMunicipalViewSet)
+#router.register(r'servicios-municipal', ServicioMunicipalViewSet)
 router.register(r'evento', EventoViewSet)
 router.register(r'alerta', AlertaViewSet)
 router.register(r'pago-servicio', PagoServicioViewSet)

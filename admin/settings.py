@@ -27,15 +27,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-s6dzv9#(*u##26l3f5a*ixr3-6t!bx+5a(j1o+=s(9@c+6t9-i'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['18.217.7.131', 'localhost']
+ALLOWED_HOSTS = ['18.217.7.131', 'munigo.online', 'www.munigo.online']
 
 
 # Application definition
 
 INSTALLED_APPS = [
-    "unfold",
+    'unfold',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -73,7 +73,7 @@ UNFOLD = {
     },
        
     "STYLES": [
-        lambda request: static("css/style.css"),
+        lambda request: static("css/admin.css"),
     ],
     
     "COLORS": {
@@ -198,9 +198,10 @@ LOGIN_URL = '/login/'
 LOGOUT_REDIRECT_URL = '/login/' 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media') 
+STATIC_ROOT = '/home/ubuntu/MuniGo/staticfiles'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
+    '/home/ubuntu/MuniGo/static',
 ]
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
